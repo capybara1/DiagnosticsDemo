@@ -22,7 +22,21 @@ namespace LoggingDemo
 
         private class DemoEvent
         {
+            private static readonly Action<ILogger, DemoEvent, Exception> _emit = LoggerMessage.Define<DemoEvent>(
+                LogLevel.Information,
+                new EventId(1, "DemoEvent"),
+                "Event: {@event}");
+
             public int SomeInformation { get; set; }
+
+            public static void Emit(ILogger logger, int someInformation)
+            {
+                var @event = new DemoEvent
+                {
+                    SomeInformation = someInformation,
+                };
+                _emit(logger, @event, null);
+            }
 
             public override string ToString() => "DemoEvent";
         }
@@ -49,11 +63,7 @@ namespace LoggingDemo
             var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
             var logger = loggerFactory.CreateLogger<BasicDemos>();
 
-            var @event = new DemoEvent
-            {
-                SomeInformation = 123,
-            };
-            logger.LogInformation("Event: {@event}", @event);
+            DemoEvent.Emit(logger, 123);
         }
     }
 }
