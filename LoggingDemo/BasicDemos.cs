@@ -1,8 +1,8 @@
+using LoggingDemo.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Xunit;
-using LoggingDemo.Utils;
 using System;
+using Xunit;
 
 namespace LoggingDemo
 {
