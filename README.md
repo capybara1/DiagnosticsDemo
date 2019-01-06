@@ -111,7 +111,7 @@ Critical
   - Not noisy
   - May use semantic/structured logging (depending on design)
 
-## APIs
+## API's
 
 ### EWT/Windows Event Log
 
