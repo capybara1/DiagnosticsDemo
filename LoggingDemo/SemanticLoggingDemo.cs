@@ -1,72 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using LoggingDemo.Utils;
+﻿using LoggingDemo.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
 using Xunit;
 
 namespace LoggingDemo
 {
     public class SemanticLoggingDemo
     {
+        // Note:
+        // This demo relies on the capability of a logging-provider
+        // to interpret parameters as structured data. Since this is not an
+        // inbuild feature of Microsoft.Extensions.Logging.Abstractions,
+        // semantic logging in this context requires other means,
+        // such as naming conventions, to distinguish structured data
+        // from mere formatting parameters.
+        // In this demo the XunitLogger is designed to handle parameters,
+        // keyed with names that begin with '@', as structured data. Keep
+        // in mind that the solution, implemented forother frameworks,
+        // might handle this differently.
+
         private class DemoEvent
         {
             public int SomeInformation { get; set; }
 
             public override string ToString() => "DemoEvent";
-        }
-
-        private class SemanticLoggerProvider : ILoggerProvider
-        {
-            private readonly Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
-
-            public SemanticLoggerProvider(Xunit.Abstractions.ITestOutputHelper testOutputHelper)
-            {
-                _testOutputHelper = testOutputHelper;
-            }
-
-            public ILogger CreateLogger(string categoryName) => new SemanticLogger(_testOutputHelper, categoryName);
-
-            public void Dispose()
-            { }
-        }
-
-        private class SemanticLogger : XunitLogger
-        {
-            private readonly System.Reflection.BindingFlags Flags = System.Reflection.BindingFlags.Public
-                | System.Reflection.BindingFlags.Instance;
-
-            private readonly Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
-
-            public SemanticLogger(Xunit.Abstractions.ITestOutputHelper testOutputHelper, string categoryName)
-                : base(testOutputHelper, categoryName)
-            {
-                _testOutputHelper = testOutputHelper ?? throw new ArgumentNullException(nameof(testOutputHelper));
-            }
-
-            public override void Log<TState>(
-                LogLevel logLevel,
-                EventId eventId,
-                TState state,
-                Exception exception,
-                Func<TState, Exception, string> formatter)
-            {
-                base.Log(logLevel, eventId, state, exception, formatter);
-
-                var structure = state as IEnumerable<KeyValuePair<string, object>>;
-                if (structure != null)
-                {
-                    _testOutputHelper.WriteLine("Values that may be send to a value store:");
-
-                    foreach (var semanticMessage in structure.Where(kvp => kvp.Key.StartsWith('+')))
-                    foreach (var property in semanticMessage.Value.GetType().GetProperties(Flags))
-                    {
-                        var value = property.GetValue(semanticMessage.Value, null);
-                        _testOutputHelper.WriteLine($"{property.Name}: {value} ({value.GetType().Name})");
-                    }
-                }
-            }
         }
 
         private readonly Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
@@ -76,14 +34,14 @@ namespace LoggingDemo
             _testOutputHelper = testOutputHelper ?? throw new ArgumentNullException(nameof(testOutputHelper));
         }
 
-        [Fact(DisplayName = "Log to Test Output With Extension Method Using LoggerFactory")]
-        public void LogToTestOutputOutputWithExtensionMethodUsingLoggerFactory()
+        [Fact(DisplayName = "Log to Test Output Using Semantic Logging")]
+        public void LogToTestOutputOutputUsingSemanticLogging()
         {
             var services = new ServiceCollection();
 
             services.AddLogging(builder =>
             {
-                builder.AddProvider(new SemanticLoggerProvider(_testOutputHelper));
+                builder.AddXunit(_testOutputHelper);
             });
 
             var serviceProvider = services.BuildServiceProvider();
@@ -95,7 +53,7 @@ namespace LoggingDemo
             {
                 SomeInformation = 123,
             };
-            logger.LogInformation("Event: {+message}", @event);
+            logger.LogInformation("Event: {@event}", @event);
         }
     }
 }
