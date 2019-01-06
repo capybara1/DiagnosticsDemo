@@ -10,12 +10,5 @@ namespace LoggingDemo.Utils
             builder.AddProvider(new XunitLoggerProvider(testOutputHelper));
             return builder;
         }
-
-        public static ILoggingBuilder SetupDemoLogging(this ILoggingBuilder builder, ITestOutputHelper testOutputHelper)
-        {
-            builder.AddXunit(testOutputHelper);
-            builder.SetMinimumLevel(LogLevel.Information);
-            return builder;
-        }
     }
 }
