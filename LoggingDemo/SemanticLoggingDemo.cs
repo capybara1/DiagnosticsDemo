@@ -57,6 +57,8 @@ namespace LoggingDemo
                 var structure = state as IEnumerable<KeyValuePair<string, object>>;
                 if (structure != null)
                 {
+                    _testOutputHelper.WriteLine("Values that may be send to a value store:");
+
                     foreach (var semanticMessage in structure.Where(kvp => kvp.Key.StartsWith('+')))
                     foreach (var property in semanticMessage.Value.GetType().GetProperties(Flags))
                     {
