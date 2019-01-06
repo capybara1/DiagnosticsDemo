@@ -1,11 +1,16 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Xunit.Abstractions;
 
 namespace LoggingDemo.Utils
 {
     public class XunitLogger : ILogger
     {
+        private static readonly BindingFlags GetPropertiesFlags = BindingFlags.Public | BindingFlags.Instance;
+
         private readonly ITestOutputHelper _testOutputHelper;
         private readonly string _categoryName;
 
@@ -27,9 +32,23 @@ namespace LoggingDemo.Utils
             Func<TState, Exception, string> formatter)
         {
             _testOutputHelper.WriteLine($"{_categoryName} [{eventId}] {formatter(state, exception)}");
+
             if (exception != null)
             {
                 _testOutputHelper.WriteLine(exception.ToString());
+            }
+            
+            var structure = state as IEnumerable<KeyValuePair<string, object>>;
+            if (structure != null)
+            {
+                _testOutputHelper.WriteLine("Values that may be send to a value store:");
+
+                foreach (var semanticMessage in structure.Where(kvp => kvp.Key.StartsWith('@')))
+                    foreach (var property in semanticMessage.Value.GetType().GetProperties(GetPropertiesFlags))
+                    {
+                        var value = property.GetValue(semanticMessage.Value, null);
+                        _testOutputHelper.WriteLine($"{property.Name}: {value} ({value.GetType().Name})");
+                    }
             }
         }
     }
