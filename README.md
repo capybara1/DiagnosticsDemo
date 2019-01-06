@@ -9,7 +9,7 @@ Demo code with examples for educational purpose
 ## Guidelines
 
 Reference
-- [ASP.NET Core Loggin Guidelines](https://github.com/aspnet/Logging/wiki/Guidelines)
+- [ASP.NET Core Logging Guidelines](https://github.com/aspnet/Logging/wiki/Guidelines)
 
 ### Log-Level
 
