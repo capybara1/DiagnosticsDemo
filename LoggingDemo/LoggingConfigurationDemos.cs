@@ -66,8 +66,12 @@ namespace LoggingDemo
         {
             var loggingConfiguration = CreateConfiguration(new[]
             {
-                new KeyValuePair<string, string>("LogLevel::LoggingDemo.Helper", "Debug"),
-                new KeyValuePair<string, string>("LogLevel::Default", "Information"),
+                new KeyValuePair<string, string>(
+                    ConfigurationPath.Combine("LogLevel", "LoggingDemo.Helper"),
+                    "Debug"),
+                new KeyValuePair<string, string>(
+                    ConfigurationPath.Combine("LogLevel", "Default"),
+                    "Information"),
             });
             
             var services = new ServiceCollection();
@@ -93,7 +97,9 @@ namespace LoggingDemo
         {
             var loggingConfiguration = CreateConfiguration(new[]
             {
-                new KeyValuePair<string, string>("XunitLogger::LogLevel::LoggingDemo.", "Information"),
+                new KeyValuePair<string, string>(
+                    ConfigurationPath.Combine("XunitLogger", "LogLevel", "LoggingDemo"),
+                    "Information"),
             });
             
             var services = new ServiceCollection();
