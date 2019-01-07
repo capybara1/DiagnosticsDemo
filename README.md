@@ -58,7 +58,7 @@ Situations:
 Quality:
 - Usually not noisy
 - The output should scale well
-- Usually no semantic/structured logging
+- Semantic/structured logging if required
 
 Performance:
 - Affects performance
@@ -82,7 +82,7 @@ Situations:
 Quality:
 - Usually not noisy
 - The output should scale well
-- May use semantic/structured logging (depending on design)
+- Semantic/structured logging recommended
 
 Performance:
 - Should not affect performance
@@ -102,7 +102,7 @@ Situations:
 
 Quality:
 - Not noisy
-- May use semantic/structured logging (depending on design)
+- Semantic/structured logging recommended
 
 Performance:
 - Should not affect performance
@@ -123,7 +123,7 @@ Situations:
 
 Quality:
 - Not noisy
-- May use semantic/structured logging (depending on design)
+- Semantic/structured logging recommended
 
 Performance:
 - Should not affect performance
@@ -145,7 +145,7 @@ Situations:
 
 Quality:
 - Not noisy
-- May use semantic/structured logging (depending on design)
+- Semantic/structured logging if required
 
 Performance:
 - Should not affect performance
@@ -153,6 +153,16 @@ Performance:
 Storage:
 - The information has usually long-term value
 - A value store ought to be used
+
+### Filtering
+
+Terminology:
+
+|ASP.NET Core|Serilog       |NLog        |log4net    |System.Diagnostics|
+|------------|--------------|------------|-----------|------------------|
+|Filter      |Filter        |Rule        |Filter     |Switch            |
+|Provider    |Sink          |Target      |Appender   |Listener          |
+|Category    |Source Context|Logger Name |Logger Name|                  |
 
 ## API's
 
