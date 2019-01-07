@@ -44,14 +44,19 @@ namespace LoggingDemo.Utils
                 _testOutputHelper.WriteLine(exception.ToString());
             }
             
-            var structure = state as IEnumerable<KeyValuePair<string, object>>;
-            if (structure != null)
+            var structure = (state as IEnumerable<KeyValuePair<string, object>>)
+                ?.Where(i => i.Key != "{OriginalFormat}")
+                .ToArray();
+            if (structure?.Length > 0)
             {
                 _testOutputHelper.WriteLine("  Values that may be send to a value store:");
 
-                foreach (var item in structure.Where(i => i.Key != "{OriginalFormat}"))
+                foreach (var item in structure)
                 {
-                    _testOutputHelper.WriteLine($" - {item.Key}: {item.Value} (of {item.Value.GetType().FullName})");
+                    var name = item.Key;
+                    var value = item.Value ?? "null";
+                    var type = item.Value?.GetType().FullName ?? "unknown type";
+                    _testOutputHelper.WriteLine($" - {name}: {value} (of {type})");
                 }
             }
         }
