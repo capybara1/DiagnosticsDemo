@@ -23,7 +23,7 @@ namespace LoggingDemo
 
             services.AddLogging(builder =>
             {
-                builder.AddXunit(_testOutputHelper);
+                builder.AddDemo(_testOutputHelper);
             });
 
             var serviceProvider = services.BuildServiceProvider();
@@ -41,7 +41,7 @@ namespace LoggingDemo
 
             services.AddLogging(builder =>
             {
-                builder.AddXunit(_testOutputHelper);
+                builder.AddDemo(_testOutputHelper);
             });
 
             var serviceProvider = services.BuildServiceProvider();
@@ -64,7 +64,7 @@ namespace LoggingDemo
 
             services.AddLogging(builder =>
             {
-                builder.AddXunit(_testOutputHelper);
+                builder.AddDemo(_testOutputHelper);
             });
 
             var serviceProvider = services.BuildServiceProvider();
@@ -84,7 +84,7 @@ namespace LoggingDemo
 
             services.AddLogging(builder =>
             {
-                builder.AddXunit(_testOutputHelper);
+                builder.AddDemo(_testOutputHelper);
             });
 
             var serviceProvider = services.BuildServiceProvider();
@@ -104,7 +104,7 @@ namespace LoggingDemo
 
             services.AddLogging(builder =>
             {
-                builder.AddXunit(_testOutputHelper);
+                builder.AddDemo(_testOutputHelper);
             });
 
             var serviceProvider = services.BuildServiceProvider();
@@ -126,7 +126,7 @@ namespace LoggingDemo
 
             services.AddLogging(builder =>
             {
-                builder.AddXunit(_testOutputHelper);
+                builder.AddDemo(_testOutputHelper);
             });
 
             var serviceProvider = services.BuildServiceProvider();
@@ -143,7 +143,7 @@ namespace LoggingDemo
 
             services.AddLogging(builder =>
             {
-                builder.AddXunit(_testOutputHelper);
+                builder.AddDemo(_testOutputHelper);
             });
 
             var serviceProvider = services.BuildServiceProvider();

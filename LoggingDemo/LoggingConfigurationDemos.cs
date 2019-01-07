@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Xunit;
 
 namespace LoggingDemo
@@ -28,7 +29,7 @@ namespace LoggingDemo
                 builder.AddFilter("LoggingDemo.Helper", LogLevel.Debug);
                 builder.SetMinimumLevel(LogLevel.Information);
 
-                builder.AddXunit(_testOutputHelper);
+                builder.AddDemo(_testOutputHelper);
             });
 
             var serviceProvider = services.BuildServiceProvider();
@@ -48,9 +49,9 @@ namespace LoggingDemo
 
             services.AddLogging(builder =>
             {
-                builder.AddFilter<XunitLoggerProvider>("LoggingDemo", LogLevel.Information);
+                builder.AddFilter<DemoLoggerProvider>("LoggingDemo", LogLevel.Information);
 
-                builder.AddXunit(_testOutputHelper);
+                builder.AddDemo(_testOutputHelper);
             });
 
             var serviceProvider = services.BuildServiceProvider();
@@ -79,7 +80,7 @@ namespace LoggingDemo
             services.AddLogging(builder =>
             {
                 builder.AddConfiguration(loggingConfiguration);
-                builder.AddXunit(_testOutputHelper);
+                builder.AddDemo(_testOutputHelper);
             });
 
             var serviceProvider = services.BuildServiceProvider();
@@ -95,10 +96,11 @@ namespace LoggingDemo
         [Fact(DisplayName = "Configure LogLevel Via Configuration For Specific Provider")]
         public void ConfigureLogLevelViaConfigurationForSpecificProvider()
         {
+            var loggerName = Regex.Replace(nameof(DemoLoggerProvider), "Provider$", string.Empty);
             var loggingConfiguration = CreateConfiguration(new[]
             {
                 new KeyValuePair<string, string>(
-                    ConfigurationPath.Combine("XunitLogger", "LogLevel", "LoggingDemo"),
+                    ConfigurationPath.Combine(loggerName, "LogLevel", "LoggingDemo"),
                     "Information"),
             });
             
@@ -107,7 +109,7 @@ namespace LoggingDemo
             services.AddLogging(builder =>
             {
                 builder.AddConfiguration(loggingConfiguration);
-                builder.AddXunit(_testOutputHelper);
+                builder.AddDemo(_testOutputHelper);
             });
 
             var serviceProvider = services.BuildServiceProvider();

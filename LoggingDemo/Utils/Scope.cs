@@ -4,9 +4,9 @@ namespace LoggingDemo.Utils
 {
     internal class Scope : IDisposable
     {
-        private readonly XunitLogger _logger;
+        private readonly DemoLogger _logger;
 
-        public Scope(XunitLogger logger)
+        public Scope(DemoLogger logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }

@@ -6,14 +6,14 @@ using Xunit.Abstractions;
 
 namespace LoggingDemo.Utils
 {
-    public class XunitLogger : ILogger
+    public class DemoLogger : ILogger
     {
         private readonly ITestOutputHelper _testOutputHelper;
         private readonly string _categoryName;
 
         public string CurrentScope { get; set; }
 
-        public XunitLogger(ITestOutputHelper testOutputHelper, string categoryName)
+        public DemoLogger(ITestOutputHelper testOutputHelper, string categoryName)
         {
             _testOutputHelper = testOutputHelper;
             _categoryName = categoryName;

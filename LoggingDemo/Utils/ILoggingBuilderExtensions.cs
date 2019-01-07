@@ -5,9 +5,9 @@ namespace LoggingDemo.Utils
 {
     public static class ILoggingBuilderExtensions
     {
-        public static ILoggingBuilder AddXunit(this ILoggingBuilder builder, ITestOutputHelper testOutputHelper)
+        public static ILoggingBuilder AddDemo(this ILoggingBuilder builder, ITestOutputHelper testOutputHelper)
         {
-            builder.AddProvider(new XunitLoggerProvider(testOutputHelper));
+            builder.AddProvider(new DemoLoggerProvider(testOutputHelper));
             return builder;
         }
     }

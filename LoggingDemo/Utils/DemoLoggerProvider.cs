@@ -3,16 +3,16 @@ using Xunit.Abstractions;
 
 namespace LoggingDemo.Utils
 {
-    public class XunitLoggerProvider : ILoggerProvider
+    public class DemoLoggerProvider : ILoggerProvider
     {
         private readonly ITestOutputHelper _testOutputHelper;
 
-        public XunitLoggerProvider(ITestOutputHelper testOutputHelper)
+        public DemoLoggerProvider(ITestOutputHelper testOutputHelper)
         {
             _testOutputHelper = testOutputHelper;
         }
 
-        public ILogger CreateLogger(string categoryName) => new XunitLogger(_testOutputHelper, categoryName);
+        public ILogger CreateLogger(string categoryName) => new DemoLogger(_testOutputHelper, categoryName);
 
         public void Dispose()
         { }
