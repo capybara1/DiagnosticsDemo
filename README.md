@@ -13,103 +13,146 @@ Reference
 
 ### Log-Level
 
-Trace
-- Audience
-  - Primarily intended for developers
-- Situations
-  - Interactive investigation during development
-- Storage
-  - High volume of data ought to be expected
-  - The information has no long-term value
-  - A volumen store ought to be used
-- Performance
-  - Affects performance
-- Quality
-  - No restrictions (loops, object dumps, SQL)
-  - May be noisy (repeated information)
-  - Might contain sensitive information
-  - No semantic/structured logging
+|ASP.NET Core|Serilog   |NLog |log4net*|
+|:----------:|:--------:|:---:|:------:|
+|Trace       |Verbose   |Trace|        |
+|Debug       |Debug     |Debug|Debug   |
+|Information |Informtion|Info |Info    |
+|Warning     |Warning   |Warn |Warn    |
+|Error       |Error     |Error|Error   |
+|Critical    |Fatal     |Fatal|Fatal   |
 
-Debug
-- Audience
-  - Primarily intended for developers
-- Situation
-  - Interactive investigation during development
-- Storage
-  - High volume of data ought to be expected
-  - The information has no long-term value
-  - A volumen store ought to be used
-- Performance
-  - Affects performance
-- Quality
-  - Usually not noisy
-  - The output should scale well
-  - May use semantic/structured if value storage depending on design 
+*) Default configuration. Additional levels available: Trace, Verbose, Notice, Alert, Severe, Emergency 
 
-Info
-- Audience
-  - Primarily intended for operations
-- Situations
-  - Tracks the general flow of the application
-    - Startup configuration settings
-    - Entry and exit points
-    - Changes to the state of the application
-- Storage
-  - Low volume of data ought to be expected
-  - The information has usually long-term value
-  - A value store ought to be used
-- Performance
-  - Should not affect performance
-- Quality
-  - Usually not noisy
-  - The output should scale well
-  - May use semantic/structured logging (depending on design)
+#### Verbose/Trace
 
-Warning
-- Audience
-  - Primarily intended for operations
-- Situations
-  - An abnormal or unexpected event occured, which did not cause execution to stop, but can signify sub-optimal performance or a potential problem for the future e.g. a handled exceptions.
-- Storage
-  - Low volume of data ought to be expected
-  - The information has usually long-term value
-  - A value store ought to be used
-- Performance
-  - Should not affect performance
-- Quality
-  - Not noisy
-  - May use semantic/structured logging (depending on design)
+Audience:
+- Primarily intended for developers
 
-Error
-- Audience
-  - Primarily intended for operations
-- Situations
-  - The flow of execution is stopped due to a failure that requires investigation
-- Storage
-  - Low volume of data ought to be expected
-  - The information has usually long-term value
-  - A value store ought to be used
-- Performance
-  - Should not affect performance
-- Quality
-  - Not noisy
-  - May use semantic/structured logging (depending on design)
+Situations:
+- Interactive investigation during development
+- The finest level of verbosity is required
 
-Critical
-- Audience
-  - Primarily intended for operations
-- Situations
-  - Low volume of data ought to be expected
-  - An unrecoverable application or system crash
-  - A catastrophic failure that requires immediate attention e.g. data loss
-- Storage
-  - The information has usually long-term value
-  - A value store ought to be used
-- Performance
-  - Should not affect performance
-- Quality
-  - Not noisy
-  - May use semantic/structured logging (depending on design)
+Quality:
+- No restrictions (loops, object dumps, SQL)
+- May be noisy (repeated information)
+- Might contain sensitive information
+- No semantic/structured logging
+
+Performance:
+- Affects performance
+
+Storage:
+- High volume of data ought to be expected
+- The information has no long-term value
+- A volumen store ought to be used
+
+#### Debug
+
+Audience:
+- Primarily intended for developers
+
+Situations:
+- Interactive investigation during development
+
+Quality:
+- Usually not noisy
+- The output should scale well
+- Usually no semantic/structured logging
+
+Performance:
+- Affects performance
+
+Storage:
+- High volume of data ought to be expected
+- The information has no long-term value
+- A volumen store ought to be used
+
+#### Information/Info
+
+Audience:
+- Primarily intended for operations
+
+Situations:
+- Tracks the general flow of the application
+- Startup configuration settings
+- Entry and exit points
+- Changes to the state of the application
+
+Quality:
+- Usually not noisy
+- The output should scale well
+- May use semantic/structured logging (depending on design)
+
+Performance:
+- Should not affect performance
+
+Storage:
+- Low volume of data ought to be expected
+- The information has usually long-term value
+- A value store ought to be used
+
+#### Warning/Warn
+
+Audience:
+- Primarily intended for operations
+
+Situations:
+- An abnormal or unexpected event occured, which did not cause execution to stop, but can signify sub-optimal performance or a potential problem for the future e.g. a handled exceptions.
+
+Quality:
+- Not noisy
+- May use semantic/structured logging (depending on design)
+
+Performance:
+- Should not affect performance
+
+Storage:
+- Low volume of data ought to be expected
+- The information has usually long-term value
+- A value store ought to be used
+
+#### Error
+
+Audience:
+- Primarily intended for operations
+
+Situations:
+- The flow of execution is stopped due to a failure that requires investigation
+- The "2AM rule": if you're on call, do you want to be woken up at 2AM if this condition happens
+
+Quality:
+- Not noisy
+- May use semantic/structured logging (depending on design)
+
+Performance:
+- Should not affect performance
+
+Storage:
+- Low volume of data ought to be expected
+- The information has usually long-term value
+- A value store ought to be used
+
+#### Fatal/Critical
+
+Audience:
+- Primarily intended for operations
+
+Situations:
+- Low volume of data ought to be expected
+- An unrecoverable application or system crash
+- A catastrophic failure that requires immediate attention e.g. data loss
+
+Quality:
+- Not noisy
+- May use semantic/structured logging (depending on design)
+
+Performance:
+- Should not affect performance
+
+Storage:
+- The information has usually long-term value
+- A value store ought to be used
 
 ## API's
 
