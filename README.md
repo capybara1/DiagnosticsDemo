@@ -13,14 +13,14 @@ Reference
 
 ### Log-Level
 
-|ASP.NET Core|Serilog   |NLog |log4net*|
-|:----------:|:--------:|:---:|:------:|
-|Trace       |Verbose   |Trace|        |
-|Debug       |Debug     |Debug|Debug   |
-|Information |Informtion|Info |Info    |
-|Warning     |Warning   |Warn |Warn    |
-|Error       |Error     |Error|Error   |
-|Critical    |Fatal     |Fatal|Fatal   |
+|ASP.NET Core|Serilog    |NLog |log4net*|
+|:----------:|:---------:|:---:|:------:|
+|Trace       |Verbose    |Trace|        |
+|Debug       |Debug      |Debug|Debug   |
+|Information |Information|Info |Info    |
+|Warning     |Warning    |Warn |Warn    |
+|Error       |Error      |Error|Error   |
+|Critical    |Fatal      |Fatal|Fatal   |
 
 *) Default configuration. Additional levels available: Trace, Verbose, Notice, Alert, Severe, Emergency 
 
