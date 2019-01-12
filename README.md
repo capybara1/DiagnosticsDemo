@@ -1,17 +1,19 @@
-# Logging Demo
+# Diagnostics Demo
 
 Demo code with examples for educational purpose
+## Distinction
 
-## Distinction: Logging and Tracing
+- [Tracing and Instrumenting Applications](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)
+- [Wikipedia on Tracing](https://en.wikipedia.org/wiki/Tracing_%28software%29)
 
-[Wikipedia on Tracing](https://en.wikipedia.org/wiki/Tracing_%28software%29)
+## Logging and Tracing
 
-## Guidelines
+### Guidelines
 
 Reference
 - [ASP.NET Core Logging Guidelines](https://github.com/aspnet/Logging/wiki/Guidelines)
 
-### Log-Level
+#### Log-Level
 
 |ASP.NET Core|Serilog    |NLog |log4net*|
 |:----------:|:---------:|:---:|:------:|
@@ -24,7 +26,7 @@ Reference
 
 *) Default configuration. Additional levels available: Trace, Verbose, Notice, Alert, Severe, Emergency 
 
-#### Verbose/Trace
+##### Verbose/Trace
 
 Audience:
 - Primarily intended for developers
@@ -36,6 +38,7 @@ Situations:
 Quality:
 - No restrictions (loops, object dumps, SQL)
 - May be noisy (repeated information)
+- Entry and exit points of functions
 - Might contain sensitive information
 - No semantic/structured logging
 
@@ -47,7 +50,7 @@ Storage:
 - The information has no long-term value
 - A volumen store ought to be used
 
-#### Debug
+##### Debug
 
 Audience:
 - Primarily intended for developers
@@ -68,7 +71,7 @@ Storage:
 - The information has no long-term value
 - A volumen store ought to be used
 
-#### Information/Info
+##### Information/Info
 
 Audience:
 - Primarily intended for operations
@@ -76,7 +79,7 @@ Audience:
 Situations:
 - Tracks the general flow of the application
 - Startup configuration settings
-- Entry and exit points
+- Entry and exit points of significant flow activities
 - Changes to the state of the application
 
 Quality:
@@ -92,7 +95,7 @@ Storage:
 - The information has usually long-term value
 - A value store ought to be used
 
-#### Warning/Warn
+##### Warning/Warn
 
 Audience:
 - Primarily intended for operations
@@ -112,7 +115,7 @@ Storage:
 - The information has usually long-term value
 - A value store ought to be used
 
-#### Error
+##### Error
 
 Audience:
 - Primarily intended for operations
@@ -133,7 +136,7 @@ Storage:
 - The information has usually long-term value
 - A value store ought to be used
 
-#### Fatal/Critical
+##### Fatal/Critical
 
 Audience:
 - Primarily intended for operations
@@ -154,7 +157,7 @@ Storage:
 - The information has usually long-term value
 - A value store ought to be used
 
-### Filtering
+#### Filtering
 
 Terminology:
 
@@ -164,8 +167,19 @@ Terminology:
 |Provider    |Sink          |Target      |Appender   |Listener          |
 |Category    |Source Context|Logger Name |Logger Name|                  |
 
-## API's
+### API's
 
-### EWT/Windows Event Log
+#### EWT/Windows Event Log
 
 [FAQ: Common Questions for ETW and Windows Event Log](https://social.msdn.microsoft.com/Forums/en-US/a1aa1350-41a0-4490-9ae3-9b4520aeb9d4/faq-common-questions-for-etw-and-windows-event-log?forum=etw)
+
+## Profiling
+
+### Performance
+
+[Performance Counters in the .NET Framework](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/performance-counters)
+
+### Profiler
+
+- [Profiling Overview](https://docs.microsoft.com/en-us/dotnet/framework/unmanaged-api/profiling/profiling-overview)
+- [Creating a Custom .NET Profiler](https://www.codeproject.com/Articles/15410/%2FArticles%2F15410%2FCreating-a-Custom-NET-Profiler)
