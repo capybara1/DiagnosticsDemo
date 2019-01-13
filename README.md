@@ -1,10 +1,17 @@
 # Diagnostics Demo
 
 Demo code with examples for educational purpose
+
 ## Distinction
 
+[Wikipedia on Tracing](https://en.wikipedia.org/wiki/Tracing_%28software%29)
+
+Linux:
+- API: [ptrace - process trace](http://man7.org/linux/man-pages/man2/ptrace.2.html)
+- Command: [strace - trace system calls and signals](http://man7.org/linux/man-pages/man1/strace.1.html)
+
+Windows:
 - [Tracing and Instrumenting Applications](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)
-- [Wikipedia on Tracing](https://en.wikipedia.org/wiki/Tracing_%28software%29)
 
 ## Logging and Tracing
 
@@ -15,29 +22,42 @@ Reference
 
 ### Instrumentation
 
+#### Direct Output
+
+.NET API's:
+- Debugger Output: [System.Diagnostics.Debug](https://docs.microsoft.com/de-de/dotnet/api/system.diagnostics.debug?view=netframework-4.8)
+- Windows Event Log: [System.Diagnostics.EventLog](https://docs.microsoft.com/de-de/dotnet/api/system.diagnostics.eventlog?view=netframework-4.8)
+- Tracing for Windows (ETW): [System.Diagnostics.Tracing](https://docs.microsoft.com/de-de/dotnet/api/system.diagnostics.tracing?view=netframework-4.8)
+
+#### Indirect Output
+
 Logging Frameworks<sup>1</sup>:
-- [Serilog](https://serilog.net/)
-- [NLog](https://nlog-project.org/)
-- [Apache log4net](https://logging.apache.org/log4net/)
-- [Logging in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2)
-- [Tracing and Instrumenting Applications](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)
+- Microsoft:
+  - [Logging in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2)
+  - [Tracing and Instrumenting Applications](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications) ([System.Diagnostics.Debug](https://docs.microsoft.com/de-de/dotnet/api/system.diagnostics.debug?view=netframework-4.8))
+- 3<sup>rd</sup> party:
+  - [Serilog](https://serilog.net/)
+  - [NLog](https://nlog-project.org/)
+  - [Apache log4net](https://logging.apache.org/log4net/)
 
 <small>1) Excerpt of popular frameworks for .NET at the time of writing</small>
 
-#### Log-Level
+##### Log-Level
 
-|ASP.NET Core|Serilog    |NLog |log4net<sup>2</sup>|
-|:----------:|:---------:|:---:|:------:|
-|Trace       |Verbose    |Trace|        |
-|Debug       |Debug      |Debug|Debug   |
-|Information |Information|Info |Info    |
-|Warning     |Warning    |Warn |Warn    |
-|Error       |Error      |Error|Error   |
-|Critical    |Fatal      |Fatal|Fatal   |
+|ASP.NET Core|Serilog    |NLog |log4net<sup>2</sup>|System.Diagnostics.Trace|PowerShell<sup>3</sup>|
+|:----------:|:---------:|:---:|:-----------------:|:----------------------:|:--------------------:|
+|Trace       |Verbose    |Trace|                   |                        |Verbose               |
+|Debug       |Debug      |Debug|Debug              |Verbose                 |Debug                 |
+|Information |Information|Info |Info               |Information             |Information           |
+|Warning     |Warning    |Warn |Warn               |Warning                 |Warning               |
+|Error       |Error      |Error|Error              |Error                   |Error                 |
+|Critical    |Fatal      |Fatal|Fatal              |Critical                |                      |
 
 <small>2) Default configuration. Additional levels available: Trace, Verbose, Notice, Alert, Severe, Emergency</small>
 
-##### Verbose/Trace
+<small>3) Realizes as individuals streams beside `Host`, `Success` and `Progress`. See also [About Redirection](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection?view=powershell-6)</small>
+
+###### Verbose/Trace
 
 Audience:
 - Primarily intended for developers
@@ -45,6 +65,7 @@ Audience:
 Situations:
 - Interactive investigation during development
 - The finest level of verbosity is required
+- Verbose output is required on a command line (e.g. `--verbose`/`-v` or `-vv` or `-vv` in case `--debug`/`-d` is not supported)
 
 Quality:
 - No restrictions (loops, object dumps, SQL)
@@ -61,13 +82,14 @@ Storage:
 - The information has no long-term value
 - A volumen store ought to be used
 
-##### Debug
+###### Debug
 
 Audience:
 - Primarily intended for developers
 
 Situations:
 - Interactive investigation during development
+- Debug output is required on a command line (e.g. `--debug`/`-d` or `--verbose`/`-v` in case the former is not supported)
 
 Quality:
 - Usually not noisy
@@ -82,7 +104,7 @@ Storage:
 - The information has no long-term value
 - A volumen store ought to be used
 
-##### Information/Info
+###### Information/Info
 
 Audience:
 - Primarily intended for operations
@@ -106,13 +128,14 @@ Storage:
 - The information has usually long-term value
 - A value store ought to be used
 
-##### Warning/Warn
+###### Warning/Warn
 
 Audience:
 - Primarily intended for operations
 
 Situations:
 - An abnormal or unexpected event occured, which did not cause execution to stop, but can signify sub-optimal performance or a potential problem for the future e.g. a handled exceptions.
+- Usually not be used in libraries where error handling is left to the embedding code (e.g. via exceptions)
 
 Quality:
 - Not noisy
@@ -126,7 +149,7 @@ Storage:
 - The information has usually long-term value
 - A value store ought to be used
 
-##### Error
+###### Error
 
 Audience:
 - Primarily intended for operations
@@ -134,6 +157,7 @@ Audience:
 Situations:
 - The flow of execution is stopped due to a failure that requires investigation
 - The "2AM rule": if you're on call, do you want to be woken up at 2AM if this condition happens
+- Usually not be used in libraries where error handling is left to the embedding code (e.g. via exceptions)
 
 Quality:
 - Not noisy
@@ -147,7 +171,7 @@ Storage:
 - The information has usually long-term value
 - A value store ought to be used
 
-##### Fatal/Critical
+###### Fatal/Critical
 
 Audience:
 - Primarily intended for operations
@@ -156,6 +180,7 @@ Situations:
 - Low volume of data ought to be expected
 - An unrecoverable application or system crash
 - A catastrophic failure that requires immediate attention e.g. data loss
+- Usually used close to the entry point of the application
 
 Quality:
 - Not noisy
@@ -168,15 +193,15 @@ Storage:
 - The information has usually long-term value
 - A value store ought to be used
 
-#### Filtering
+##### Filtering
 
 Terminology:
 
-|ASP.NET Core|Serilog       |NLog        |log4net    |System.Diagnostics|
-|------------|--------------|------------|-----------|------------------|
-|Filter      |Filter        |Rule        |Filter     |Switch            |
-|Provider    |Sink          |Target      |Appender   |Listener          |
-|Category    |Source Context|Logger Name |Logger Name|                  |
+|ASP.NET Core|Serilog       |NLog        |log4net    |System.Diagnostics.Trace|
+|------------|--------------|------------|-----------|------------------------|
+|Filter      |Filter        |Rule        |Filter     |Switch                  |
+|Provider    |Sink          |Target      |Appender   |Listener                |
+|Category    |Source Context|Logger Name |Logger Name|                        |
 
 ## Quality Assurance
 
@@ -196,7 +221,7 @@ General:
 
 ## Monitoring
 
-### Characteristcs
+### Characteristics
 
 - Used in production
 
