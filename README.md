@@ -211,3 +211,8 @@ Terminology:
 ##### EWT/Windows Event Log
 
 - [FAQ: Common Questions for ETW and Windows Event Log](https://social.msdn.microsoft.com/Forums/en-US/a1aa1350-41a0-4490-9ae3-9b4520aeb9d4/faq-common-questions-for-etw-and-windows-event-log?forum=etw)
+
+### Telemetrie
+
+- [ELK-Stack](https://www.elastic.co/de/elk-stack)
+- [Azure Monitor](https://azure.microsoft.com/de-de/services/monitor/)
