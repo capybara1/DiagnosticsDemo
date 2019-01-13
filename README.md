@@ -167,19 +167,21 @@ Terminology:
 |Provider    |Sink          |Target      |Appender   |Listener          |
 |Category    |Source Context|Logger Name |Logger Name|                  |
 
-### API's
+## Quality Assurance
 
-#### EWT/Windows Event Log
-
-[FAQ: Common Questions for ETW and Windows Event Log](https://social.msdn.microsoft.com/Forums/en-US/a1aa1350-41a0-4490-9ae3-9b4520aeb9d4/faq-common-questions-for-etw-and-windows-event-log?forum=etw)
+- Since automation of quality assurance is not possible, logging should be subject of a manual inspection during a review
 
 ## Profiling
+
+- [Profiling Overview](https://docs.microsoft.com/en-us/dotnet/framework/unmanaged-api/profiling/profiling-overview)
+- [Creating a Custom .NET Profiler](https://www.codeproject.com/Articles/15410/%2FArticles%2F15410%2FCreating-a-Custom-NET-Profiler)
+
+## Monitoring
 
 ### Performance
 
 [Performance Counters in the .NET Framework](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/performance-counters)
 
-### Profiler
+#### EWT/Windows Event Log
 
-- [Profiling Overview](https://docs.microsoft.com/en-us/dotnet/framework/unmanaged-api/profiling/profiling-overview)
-- [Creating a Custom .NET Profiler](https://www.codeproject.com/Articles/15410/%2FArticles%2F15410%2FCreating-a-Custom-NET-Profiler)
+[FAQ: Common Questions for ETW and Windows Event Log](https://social.msdn.microsoft.com/Forums/en-US/a1aa1350-41a0-4490-9ae3-9b4520aeb9d4/faq-common-questions-for-etw-and-windows-event-log?forum=etw)
