@@ -13,9 +13,20 @@ Demo code with examples for educational purpose
 Reference
 - [ASP.NET Core Logging Guidelines](https://github.com/aspnet/Logging/wiki/Guidelines)
 
+### Instrumentation
+
+Logging Frameworks<sup>1</sup>:
+- [Serilog](https://serilog.net/)
+- [NLog](https://nlog-project.org/)
+- [Apache log4net](https://logging.apache.org/log4net/)
+- [Logging in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2)
+- [Tracing and Instrumenting Applications](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)
+
+<small>1) Excerpt of popular frameworks for .NET at the time of writing</small>
+
 #### Log-Level
 
-|ASP.NET Core|Serilog    |NLog |log4net*|
+|ASP.NET Core|Serilog    |NLog |log4net<sup>2</sup>|
 |:----------:|:---------:|:---:|:------:|
 |Trace       |Verbose    |Trace|        |
 |Debug       |Debug      |Debug|Debug   |
@@ -24,7 +35,7 @@ Reference
 |Error       |Error      |Error|Error   |
 |Critical    |Fatal      |Fatal|Fatal   |
 
-*) Default configuration. Additional levels available: Trace, Verbose, Notice, Alert, Severe, Emergency 
+<small>2) Default configuration. Additional levels available: Trace, Verbose, Notice, Alert, Severe, Emergency</small>
 
 ##### Verbose/Trace
 
@@ -173,15 +184,30 @@ Terminology:
 
 ## Profiling
 
+### Characteristcs
+
+- Used during development/staging
+
+### Tutorials
+
 - [Profiling Overview](https://docs.microsoft.com/en-us/dotnet/framework/unmanaged-api/profiling/profiling-overview)
 - [Creating a Custom .NET Profiler](https://www.codeproject.com/Articles/15410/%2FArticles%2F15410%2FCreating-a-Custom-NET-Profiler)
 
 ## Monitoring
 
-### Performance
+### Characteristcs
 
-[Performance Counters in the .NET Framework](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/performance-counters)
+- Used in production
 
-#### EWT/Windows Event Log
+### Instrumentation
 
-[FAQ: Common Questions for ETW and Windows Event Log](https://social.msdn.microsoft.com/Forums/en-US/a1aa1350-41a0-4490-9ae3-9b4520aeb9d4/faq-common-questions-for-etw-and-windows-event-log?forum=etw)
+#### Performance
+
+- [Windows Management Instrumentation](https://docs.microsoft.com/en-us/windows/desktop/wmisdk/wmi-start-page)
+- [Performance Counters in the .NET Framework](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/performance-counters)
+
+#### Events
+
+##### EWT/Windows Event Log
+
+- [FAQ: Common Questions for ETW and Windows Event Log](https://social.msdn.microsoft.com/Forums/en-US/a1aa1350-41a0-4490-9ae3-9b4520aeb9d4/faq-common-questions-for-etw-and-windows-event-log?forum=etw)
