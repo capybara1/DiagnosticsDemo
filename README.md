@@ -190,6 +190,7 @@ Terminology:
 
 ### Tutorials
 
+General:
 - [Profiling Overview](https://docs.microsoft.com/en-us/dotnet/framework/unmanaged-api/profiling/profiling-overview)
 - [Creating a Custom .NET Profiler](https://www.codeproject.com/Articles/15410/%2FArticles%2F15410%2FCreating-a-Custom-NET-Profiler)
 
@@ -199,20 +200,43 @@ Terminology:
 
 - Used in production
 
+### Features
+
+- Exploration
+- Visualization
+- Alerting
+
 ### Instrumentation
 
 #### Performance
 
+WMI:
 - [Windows Management Instrumentation](https://docs.microsoft.com/en-us/windows/desktop/wmisdk/wmi-start-page)
 - [Performance Counters in the .NET Framework](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/performance-counters)
 
 #### Events
 
-##### EWT/Windows Event Log
-
+EWT/Windows Event Log:
 - [FAQ: Common Questions for ETW and Windows Event Log](https://social.msdn.microsoft.com/Forums/en-US/a1aa1350-41a0-4490-9ae3-9b4520aeb9d4/faq-common-questions-for-etw-and-windows-event-log?forum=etw)
 
 ### Telemetrie
 
-- [ELK-Stack](https://www.elastic.co/de/elk-stack)
+[WS-Management](https://www.dmtf.org/standards/ws-man):
+- [Windows Remote Management](https://docs.microsoft.com/en-us/windows/desktop/winrm/portal)
+
+Elasticsearch:
+- [Beats](https://www.elastic.co/de/products/beats) and [Logstash](https://www.elastic.co/de/products/logstash) in an [ELK-Stack](https://www.elastic.co/de/elk-stack)
+
+Azure:
+- Web APIs from [Azure Monitor](https://azure.microsoft.com/de-de/services/monitor/)
+
+### Clients
+
+Windows Remote Management:
+- [Creating WMI Clients](https://docs.microsoft.com/en-us/windows/desktop/wmisdk/creating-wmi-clients)
+
+Elasticsearch:
+- [Kibana](https://www.elastic.co/de/products/kibana) in an [ELK-Stack](https://www.elastic.co/de/elk-stack)
+
+Azure:
 - [Azure Monitor](https://azure.microsoft.com/de-de/services/monitor/)
