@@ -246,14 +246,19 @@ EWT/Windows Event Log:
 
 ### Telemetrie
 
-[WS-Management](https://www.dmtf.org/standards/ws-man):
-- [Windows Remote Management](https://docs.microsoft.com/en-us/windows/desktop/winrm/portal)
+Local Network:
+- API
+  - [WS-Management](https://www.dmtf.org/standards/ws-man) ([Windows Remote Management](https://docs.microsoft.com/en-us/windows/desktop/winrm/portal))
+- Service
+  - [Beats](https://www.elastic.co/de/products/beats) and [Logstash](https://www.elastic.co/de/products/logstash) in an [ELK-Stack](https://www.elastic.co/de/elk-stack)
 
-Elasticsearch:
-- [Beats](https://www.elastic.co/de/products/beats) and [Logstash](https://www.elastic.co/de/products/logstash) in an [ELK-Stack](https://www.elastic.co/de/elk-stack)
-
-Azure:
-- Web APIs from [Azure Monitor](https://azure.microsoft.com/de-de/services/monitor/)
+Cloud:
+- [Azure Monitor](https://azure.microsoft.com/de-de/services/monitor/)
+- [Google Stackdriver](https://cloud.google.com/stackdriver/)
+- [Sentry](https://sentry.io/)
+- [Elmah](https://elmah.io/)
+- [Graylog GELF](http://docs.graylog.org/en/2.3/pages/gelf.html)
+- [KissLog](https://kisslog.net/)
 
 ### Clients
 
