@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{FEA3
 		Scripts\setup-counter.ps1 = Scripts\setup-counter.ps1
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceCounterDemo", "PerformanceCounterDemo\PerformanceCounterDemo.csproj", "{4FA54BBA-5569-43BB-89CF-A8AE79180046}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{E499D336-20E5-46D2-9201-95DD671989EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E499D336-20E5-46D2-9201-95DD671989EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E499D336-20E5-46D2-9201-95DD671989EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FA54BBA-5569-43BB-89CF-A8AE79180046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FA54BBA-5569-43BB-89CF-A8AE79180046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FA54BBA-5569-43BB-89CF-A8AE79180046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA54BBA-5569-43BB-89CF-A8AE79180046}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
