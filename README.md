@@ -40,8 +40,6 @@ Logging Frameworks<sup>1</sup>:
   - [NLog](https://nlog-project.org/)
   - [Apache log4net](https://logging.apache.org/log4net/)
 
-<small>1) Excerpt of popular frameworks for .NET at the time of writing</small>
-
 ##### Log-Level
 
 |ASP.NET Core|Serilog    |NLog |log4net<sup>2</sup>|System.Diagnostics.Trace|PowerShell<sup>3</sup>|
@@ -52,10 +50,6 @@ Logging Frameworks<sup>1</sup>:
 |Warning     |Warning    |Warn |Warn               |Warning                 |Warning               |
 |Error       |Error      |Error|Error              |Error                   |Error                 |
 |Critical    |Fatal      |Fatal|Fatal              |Critical                |                      |
-
-<small>2) Default configuration. Additional levels available: Trace, Verbose, Notice, Alert, Severe, Emergency</small>
-
-<small>3) Realizes as individuals streams beside `Host`, `Success` and `Progress`. See also [About Redirection](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection?view=powershell-6)</small>
 
 ###### Verbose/Trace
 
@@ -197,11 +191,11 @@ Storage:
 
 Terminology:
 
-|ASP.NET Core|Serilog       |NLog        |log4net    |System.Diagnostics.Trace|
-|------------|--------------|------------|-----------|------------------------|
-|Filter      |Filter        |Rule        |Filter     |Switch                  |
-|Provider    |Sink          |Target      |Appender   |Listener                |
-|Category    |Source Context|Logger Name |Logger Name|                        |
+|ASP.NET Core|Serilog       |NLog        |log4net    |System.Diagnostics.Trace|PowerShell<sup>4</sup>|
+|------------|--------------|------------|-----------|------------------------|----------------------|
+|Filter      |Filter        |Rule        |Filter     |Switch                  |Redirection           |
+|Provider    |Sink          |Target      |Appender   |Listener                |                      |
+|Category    |Source Context|Logger Name |Logger Name|                        |                      |
 
 ## Quality Assurance
 
@@ -270,3 +264,9 @@ Elasticsearch:
 
 Azure:
 - [Azure Monitor](https://azure.microsoft.com/de-de/services/monitor/)
+
+<small>1) Excerpt of popular frameworks for .NET at the time of writing</small>
+
+<small>2) Default configuration. Additional levels available: Trace, Verbose, Notice, Alert, Severe, Emergency</small>
+
+<small>3) Realizes as individuals streams beside `Output`, `Host`, `Success` and `Progress`. See also [About Redirection](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection?view=powershell-6)</small>
