@@ -1,4 +1,4 @@
-﻿using LoggingDemo.Utils;
+﻿using DiagnosticsDemo.LoggingDemo.Utils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Xunit;
 
-namespace LoggingDemo
+namespace DiagnosticsDemo.LoggingDemo
 {
     public class LoggingConfigurationDemos
     {

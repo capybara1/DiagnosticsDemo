@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit.Abstractions;
 
-namespace LoggingDemo.Utils
+namespace DiagnosticsDemo.LoggingDemo.Utils
 {
     public class DemoLogger : ILogger
     {

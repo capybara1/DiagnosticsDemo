@@ -1,10 +1,10 @@
-﻿using LoggingDemo.Utils;
+﻿using DiagnosticsDemo.LoggingDemo.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using Xunit;
 
-namespace LoggingDemo
+namespace DiagnosticsDemo.LoggingDemo
 {
     public class AdvancedDemos
     {

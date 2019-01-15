@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace LoggingDemo.Helper
+namespace DiagnosticsDemo.LoggingDemo.Helper
 {
     internal static class EventIds
     {

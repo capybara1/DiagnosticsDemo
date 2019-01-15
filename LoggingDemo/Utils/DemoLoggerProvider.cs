@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
 
-namespace LoggingDemo.Utils
+namespace DiagnosticsDemo.LoggingDemo.Utils
 {
     public class DemoLoggerProvider : ILoggerProvider
     {

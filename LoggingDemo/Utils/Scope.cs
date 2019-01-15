@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LoggingDemo.Utils
+namespace DiagnosticsDemo.LoggingDemo.Utils
 {
     internal class Scope : IDisposable
     {

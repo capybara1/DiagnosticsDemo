@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 
-namespace LoggingDemo.Helper
+namespace DiagnosticsDemo.LoggingDemo.Helper
 {
     internal class DemoEvent
     {
