@@ -10,7 +10,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingDemo", "LoggingDemo\LoggingDemo.csproj", "{E499D336-20E5-46D2-9201-95DD671989EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingDemo", "LoggingDemo\LoggingDemo.csproj", "{E499D336-20E5-46D2-9201-95DD671989EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{FEA334DA-0060-4145-98B9-70D37A87227B}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\delete-log.ps1 = Scripts\delete-log.ps1
+		Scripts\query-log.ps1 = Scripts\query-log.ps1
+		Scripts\setup-log.ps1 = Scripts\setup-log.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +32,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FEA334DA-0060-4145-98B9-70D37A87227B} = {85377485-9F9B-4FF1-871A-31857A7582F5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2DCC7A6A-F23F-4A45-A629-B4D51295A4AB}
