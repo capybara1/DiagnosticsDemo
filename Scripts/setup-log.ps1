@@ -1,10 +1,11 @@
 <#
     .SYNOPSIS
-        Demo for creating and modifying a Windows Event-Log Source
+        Demo for implicitly creating a Windows Event-Log by creating a source
     .DESCRIPTION
         Demonstrates the usage of the .NET Classes and the wevtutil command by a simple example.
-        See also https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.eventlog.createeventsource
-        See also https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/wevtutil
+    .LINKS
+        https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.eventlog.createeventsource
+        https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/wevtutil
     .NOTES
         If $logName is null or an empty string, the log defaults to the Application log.
         If the log does not exist on the local computer, the system creates a custom log
@@ -12,8 +13,6 @@
 #>
 
 $source = "DiagnosticsDemo"
-
-
 $logName = "DiagnosticsDemo"
 
 If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator")) {

@@ -3,7 +3,8 @@
         Demo for querying a Windows Event-Log
     .DESCRIPTION
         Demonstrates the usage of the wevtutil command by a simple example.
-        See also https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/wevtutil
+    .LINKS
+        https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/wevtutil
     .NOTES
         Use the /r or the /remote parameter to access remote computers
 #>

@@ -3,7 +3,8 @@
         Demo for deleting a Windows Event-Log Source
     .DESCRIPTION
         Demonstrates the usage of .NET classes by a simple example.
-        See also https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.eventlog.deleteeventsource
+    .LINKS
+        https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.eventlog.deleteeventsource
     .NOTES
         For removing a single source from a log use
         [System.Diagnostics.EventLog]::SourceExists($source) and

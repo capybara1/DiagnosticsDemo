@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{FEA3
 		Scripts\delete-log.ps1 = Scripts\delete-log.ps1
 		Scripts\query-log.ps1 = Scripts\query-log.ps1
 		Scripts\setup-log.ps1 = Scripts\setup-log.ps1
+		Scripts\setup-counter.ps1 = Scripts\setup-counter.ps1
 	EndProjectSection
 EndProject
 Global
