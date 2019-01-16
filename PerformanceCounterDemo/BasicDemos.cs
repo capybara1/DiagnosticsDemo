@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics;
 using Xunit;
 
@@ -8,6 +7,14 @@ namespace DiagnosticsDemo.PerformanceCounterDemo
     {
         private const string TestCategory = "DiagnosticsDemo";
         private const string NumberOfItemsName = "DiagnosticsDemo1";
+
+        public BasicDemos()
+        {
+            if (!PerformanceCounterCategory.Exists(TestCategory))
+            {
+                Debug.WriteLine($"The category {TestCategory} does not exist");
+            }
+        }
 
         [Fact(DisplayName = "NumberOfItems Demo")]
         public void NumberOfItemsDemo()
