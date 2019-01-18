@@ -9,6 +9,7 @@ Demo code with examples for educational purpose
 Linux:
 - API: [ptrace - process trace](http://man7.org/linux/man-pages/man2/ptrace.2.html)
 - Command: [strace - trace system calls and signals](http://man7.org/linux/man-pages/man1/strace.1.html)
+- Tool: [DTrace](https://en.wikipedia.org/wiki/DTrace)
 
 Windows:
 - [Tracing and Instrumenting Applications](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)
@@ -42,14 +43,15 @@ Logging Frameworks<sup>1</sup>:
 
 ##### Log-Level
 
-|ASP.NET Core|Serilog    |NLog |log4net<sup>2</sup>|System.Diagnostics.Trace|PowerShell<sup>3</sup>|
-|:----------:|:---------:|:---:|:-----------------:|:----------------------:|:--------------------:|
-|Trace       |Verbose    |Trace|                   |                        |Verbose               |
-|Debug       |Debug      |Debug|Debug              |Verbose                 |Debug                 |
-|Information |Information|Info |Info               |Information             |Information           |
-|Warning     |Warning    |Warn |Warn               |Warning                 |Warning               |
-|Error       |Error      |Error|Error              |Error                   |Error                 |
-|Critical    |Fatal      |Fatal|Fatal              |Critical                |                      |
+|ASP.NET Core|Serilog    |NLog |log4net<sup>2</sup>|System.Diagnostics.Trace|System.Diagnostics.Tracing|PowerShell<sup>3</sup>|
+|:----------:|:---------:|:---:|:-----------------:|:----------------------:|:------------------------:|:--------------------:|
+|Trace       |Verbose    |Trace|                   |                        |                          |Verbose               |
+|Debug       |Debug      |Debug|Debug              |Verbose                 |Verbose                   |Debug                 |
+|Information |Information|Info |Info               |Information             |Informational             |Information           |
+|Warning     |Warning    |Warn |Warn               |Warning                 |Warning                   |Warning               |
+|Error       |Error      |Error|Error              |Error                   |Error                     |Error                 |
+|Critical    |Fatal      |Fatal|Fatal              |Critical                |Critical                  |                      |
+|            |           |     |                   |                        |LogAlways                 |                      |
 
 ###### Verbose/Trace
 
