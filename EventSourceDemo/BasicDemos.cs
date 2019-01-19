@@ -5,6 +5,9 @@ namespace EventSourceDemo
 {
     public class BasicDemos
     {
+        // Run:
+        // .\PerfView.exe /onlyProviders=*Demo-EventSource:EventCounterIntervalSec=1 collect
+
         private static readonly Random RandomNumbers = new Random(0);
 
         [Fact(DisplayName = "Create Event")]

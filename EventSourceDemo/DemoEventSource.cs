@@ -25,7 +25,7 @@ namespace EventSourceDemo
 
         public DemoEventSource()
         {
-            _counter = new EventCounter("DemoCounter", this);
+            _counter = new EventCounter(nameof(ChangeDemoCounter), this);
         }
 
         [Event(EventIds.SomeEvent, Level = EventLevel.Informational)]
@@ -47,6 +47,15 @@ namespace EventSourceDemo
                 actualValue);
         }
 
+        [Event(EventIds.ChangeDemoCounter, Level = EventLevel.Informational)]
+        public void ChangeDemoCounter(float metric)
+        {
+            Instance.WriteEvent(
+                EventIds.ChangeDemoCounter,
+                metric);
+            _counter.WriteMetric(metric);
+        }
+
         [NonEvent]
         public unsafe void WriteEvent(int eventId, int arg1, int arg2, int arg3, int arg4)
         {
@@ -64,9 +73,15 @@ namespace EventSourceDemo
             WriteEventCore(eventId, 4, data);
         }
 
-        public void ChangeDemoCounter(float metric)
+        [NonEvent]
+        public unsafe void WriteEvent(int eventId, float arg)
         {
-            _counter.WriteMetric(metric);
+            EventData* data = stackalloc EventData[1];
+
+            data[0].DataPointer = (IntPtr)(&arg);
+            data[0].Size = 1;
+
+            WriteEventCore(eventId, 1, data);
         }
     }
 }
