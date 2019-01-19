@@ -8,11 +8,10 @@ namespace DiagnosticsDemo.PerformanceCounterDemo
     public class BasicDemos
     {
         private const double DefaultDuration = 3;
-        
+
         // Average: measure a value over time and display the average of
         // the last two measurements.Associated with each average counte
         // is a base counter that tracks the number of samples involved.
-
 
         // Difference: subtract the last measurement from the previous one and
         // display the difference, if it is positive; if negative, they display a zero.
@@ -20,10 +19,9 @@ namespace DiagnosticsDemo.PerformanceCounterDemo
         // Instantaneous: display the most recent measurement.
 
         // Percentage: display calculated values as a percentage.
-        
+
         // Rate: sample an increasing count of events over time and divide the change
         // in count values by the change in time to display a rate of activity.
-
 
         private const string TestCategoryName = "DiagnosticsDemo";
         private const string NumberOfItemsName = "NumberOfItems64";
