@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{FEA3
 	ProjectSection(SolutionItems) = preProject
 		Scripts\delete-counter.ps1 = Scripts\delete-counter.ps1
 		Scripts\delete-log.ps1 = Scripts\delete-log.ps1
+		Scripts\docker-compose.yml = Scripts\docker-compose.yml
 		Scripts\query-log.ps1 = Scripts\query-log.ps1
 		Scripts\sample-counter.ps1 = Scripts\sample-counter.ps1
 		Scripts\setup-counter.ps1 = Scripts\setup-counter.ps1
@@ -24,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{FEA3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PerformanceCounterDemo", "PerformanceCounterDemo\PerformanceCounterDemo.csproj", "{4FA54BBA-5569-43BB-89CF-A8AE79180046}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourceDemo", "EventSourceDemo\EventSourceDemo.csproj", "{28336008-05E8-4647-97DD-3820DB8642FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventSourceDemo", "EventSourceDemo\EventSourceDemo.csproj", "{28336008-05E8-4647-97DD-3820DB8642FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
